@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.gj.clicker"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled false
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+
+        release {
+            minifyEnabled false
+        }
+    }
+
+    sourceSets {
+        src {
+            main {
+                java {
+                    srcDirs += projectDir.getAbsolutePath() + "\\..\\..\\OverloadEngine\\src"
+                    exclude "**/pc/**"
+                    exclude "**/arm/**"
+                    exclude '**/audio/**'
+                    exclude '**/controls/**'
+                    exclude '**/testing/**'
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:26.+'
+}
